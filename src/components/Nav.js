@@ -1,3 +1,4 @@
+
 import React from 'react'
 
 const Nav = () => {
@@ -38,11 +39,12 @@ const Nav = () => {
           </li>
         </ul>
         <form className="d-flex" role="search">
-          <input className="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search" />
-          <button className="btn btn-outline-success" type="submit">
-            Buscar
-          </button>
-        </form>
+  <input className="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search" />
+  <button className="btn btn-outline-success" type="submit">
+    <i className="fas fa-search"></i> {/* Ícono de lupa */}
+  </button>
+</form>
+
       </div>
     </div>
   </nav>
