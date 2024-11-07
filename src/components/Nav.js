@@ -1,9 +1,8 @@
-
 import React from 'react'
 
 const Nav = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: '#A1E8AF' }}>
+    <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: '#65E5DA' }}>
     <div className="container-fluid">
       {/* <a className="navbar-brand" href="#">
         <img src={logo} alt="Logo" width="50" height="50" className="d-inline-block align-text-top" />
@@ -38,12 +37,13 @@ const Nav = () => {
             </a>
           </li>
         </ul>
-        <form className="d-flex" role="search">
+        <form className="d-flex justify-content-start" role="search">
   <input className="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search" />
   <button className="btn btn-outline-success" type="submit">
     <i className="fas fa-search"></i> {/* Ícono de lupa */}
   </button>
 </form>
+
 
       </div>
     </div>

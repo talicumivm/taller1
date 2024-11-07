@@ -5,21 +5,25 @@ const Footer = () => {
     <footer
       className="navbar navbar-expand-lg navbar-light"
       style={{
-        backgroundColor: '#A1E8AF',
-        position: 'fixed', // Fija el footer al final
+        backgroundColor: '#65E5DA',
+        position: 'fixed', 
         bottom: 0,
         left: 0,
         width: '100%',
-        textAlign: 'center', // Centra el contenido
+        textAlign: 'center', 
       }}
     >
       <div className="container-fluid">
-        {/* Aquí puedes agregar un logo u otros elementos */}
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <a className="nav-link" href="#">
                 Instagram
+                <form className="d-flex" role="search">
+                  <button className="btn btn-outline-success" type="submit">
+                    <i className="bi bi-instagram"></i> {/* Ícono de Instagram  */}
+                  </button>
+                </form>
               </a>
             </li>
             <li className="nav-item">

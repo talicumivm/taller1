@@ -19,3 +19,19 @@ body {
 .App {
   min-height: calc(100vh - 60px); /* Ajusta la altura dependiendo del tamaño del footer */
 }
+h4{
+  color: black;
+  text-align: center;
+}
+h1{
+  color: black;
+  text-align: center
+  ;
+}
+.consulta {
+  background-color: #FFC6CF;
+  padding: 20px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
