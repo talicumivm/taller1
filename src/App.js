@@ -29,32 +29,31 @@ function App() {
               <div className="producto">
                 <img src={producto1} alt="Producto 1" className="producto-imagen" />
                 <h3>Palmera Chamadoera</h3>
-                <p>$7.396</p>
+                <p>$6500</p>
               </div>
 
               <div className="producto">
                 <img src={producto2} alt="Producto 5" className="producto-imagen" />
                 <h3>Singonio Plateado</h3>
-                <p>$7.396</p>
+                <p>$6000</p>
               </div>
-
+ñ
               <div className="producto">
                 <img src={producto3} alt="Producto 3" className="producto-imagen" />
                 <h3>Planta de Incienso</h3>
-                <p>$7.396</p>
+                <p>$3000</p>
               </div>
 
               <div className="producto">
                 <img src={producto4} alt="Producto 4" className="producto-imagen" />
                 <h3>Violeta de Persia</h3>
-                <p>$7.396</p>
+                <p>$6000</p>
               </div>
             </div>
           </>
         }/>
         <Route path="/contacto" element={<ContactForm />} /> {/* Ruta al formulario de contacto */}
       </Routes>
-
       <Footer/>
     </div>
   );
