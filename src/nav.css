@@ -1,67 +1,116 @@
-/* Nav.css */
-
 /* Estilos generales para la barra de navegación */
-.navbar {
+.custom-navbar {
     display: flex;
     align-items: center;
-    gap: 20px;
+    background-color: #65E5DA;
     padding: 10px;
-    background-color: #65E5DA !important; /* Color de fondo */
   }
   
-  /* Estilo de los enlaces de la navegación */
+  /* Contenedor para centrar el logo y los enlaces */
+  .container-fluid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+  /* Enlaces de navegación a la izquierda */
+  .navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-right: auto;
+  }
+  
+  /* Enlaces de navegación a la derecha */
+  .navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: auto;
+  }
+  
+  /* Logo centrado */
+  .navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Estilo del logo */
+  .logo-image {
+    height: 50px;
+    width: auto;
+  }
+  
+  /* Barra de búsqueda alineada a la derecha */
+  .search-bar {
+    display: flex;
+    align-items: center;
+    max-width: 200px;
+  }
+  
+  /* Estilos de los enlaces de navegación */
   .nav-link {
-    text-decoration: none;
     color: white;
     font-size: 18px;
+    text-decoration: none;
   }
   
-  /* Menú desplegable de Bootstrap */
+  .nav-link:hover {
+    color: #ffc2d0;
+  }
+  
+  /* Menú desplegable */
   .dropdown {
     position: relative;
   }
   
-  /* Estilo para el botón del menú desplegable */
-  .dropdown-button {
-    background-color: #00c2b2;
-    border: none;
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
-  }
-  
-  /* Estilos del contenido del menú desplegable personalizado */
-  .dropdown-content {
+  /* Menú desplegable horizontal */
+  .dropdown-menu {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #fff;
-    border: 1px solid #ccc;
+    display: flex; /* Mantener horizontal */
+    flex-direction: row; /* Asegura la disposición horizontal */
+    background-color: #65E5DA;
+    border: none;
+    border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 10px;
-    border-radius: 8px;
+    gap: 10px;
     z-index: 1000;
   }
   
   /* Estilos para los elementos individuales en el menú desplegable */
   .dropdown-item {
-    display: block;
-    padding: 8px;
-    text-decoration: none;
-    color: #333;
+    color: white;
     font-size: 16px;
-  }
-  
-  /* Efecto hover para los elementos en el menú desplegable */
-  .dropdown-item:hover {
-    background-color: #ffc2d0; /* Color al pasar el cursor por encima */
+    padding: 8px 12px;
+    text-decoration: none;
     border-radius: 4px;
+    white-space: nowrap; /* Evita el salto de línea */
   }
   
-  /* Estilo adicional para el menú desplegable de Bootstrap */
-  .dropdown-menu {
-    background-color: #fff; /* Fondo del menú */
-    border-radius: 8px; /* Bordes redondeados */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+  .dropdown-item:hover {
+    background-color: #ffc2d0;
+    color: #333;
+  }
+  
+  /* Responsividad: Cambia el menú a disposición vertical en pantallas pequeñas */
+  @media (max-width: 768px) {
+    .dropdown-menu {
+      flex-direction: column !important; /* Cambia a vertical en pantallas pequeñas */
+      width: 100%; /* Ocupa todo el ancho en móvil */
+      left: 0; /* Alineación en el borde izquierdo */
+    }
+  }
+  
+  /* Ajustes del botón de la barra de navegación en móviles */
+  .navbar-toggler {
+    background-color: white;
   }
   
