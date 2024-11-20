@@ -1,19 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom'; // Importa Link y useLocation de react-router-dom
+import { Link, useLocation } from 'react-router-dom';
 import '../nav.css';
 
 const Nav = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const location = useLocation(); // Hook para obtener la ubicación actual
+  const [isCartOpen, setIsCartOpen] = useState(false); // Estado para controlar el carrito
+  const location = useLocation();
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
-  // Cerrar el dropdown cuando cambias de página
+  const toggleCart = () => {
+    setIsCartOpen(!isCartOpen); // Alternar el estado del carrito
+  };
+
   useEffect(() => {
-    setIsDropdownOpen(false); // Cierra el dropdown al cambiar de página
-  }, [location]); // Este efecto se ejecuta cuando la ubicación cambia
+    setIsDropdownOpen(false);
+    setIsCartOpen(false); // Cierra el carrito al cambiar de página
+  }, [location]);
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light custom-navbar">
@@ -24,15 +29,14 @@ const Nav = () => {
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
           aria-controls="navbarNav"
-          aria-expanded={isDropdownOpen ? 'true' : 'false'} // Establece el estado de apertura
+          aria-expanded={isDropdownOpen ? 'true' : 'false'}
           aria-label="Toggle navigation"
-          onClick={toggleDropdown} // Abre/cierra el dropdown
+          onClick={toggleDropdown}
         >
           <span className="navbar-toggler-icon"></span>
         </button>
 
         <div className="collapse navbar-collapse" id="navbarNav">
-          {/* Enlaces de Navegación Izquierda */}
           <div className="navbar-left">
             <ul className="navbar-nav">
               <li className="nav-item">
@@ -40,8 +44,6 @@ const Nav = () => {
                   Inicio
                 </Link>
               </li>
-
-              {/* Menú Desplegable de Catálogo */}
               <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle"
@@ -49,12 +51,10 @@ const Nav = () => {
                   id="catalogoDropdown"
                   role="button"
                   aria-expanded={isDropdownOpen}
-                  onClick={toggleDropdown} // Cambia el estado de apertura al hacer clic
+                  onClick={toggleDropdown}
                 >
                   Catálogo
                 </a>
-
-                {/* Muestra el menú si `isDropdownOpen` es true */}
                 {isDropdownOpen && (
                   <ul className="dropdown-menu show horizontal-menu" aria-labelledby="catalogoDropdown">
                     <li><a className="dropdown-item" href="#interior">Plantas de Interior</a></li>
@@ -69,26 +69,29 @@ const Nav = () => {
             </ul>
           </div>
 
-          {/* Enlace del Logo Centrado */}
           <div className="navbar-center">
             <Link to="/" className="navbar-logo">
               <img src={require('../assets/imagenes/logo.png')} alt="Logo" className="logo-image" />
             </Link>
           </div>
 
-          {/* Enlaces de Navegación Derecha */}
           <div className="navbar-right">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <Link className="nav-link" to="/contacto"> {/* Ajuste para redirigir al formulario de contacto */}
+                <Link className="nav-link" to="/contacto">
                   Contacto
                 </Link>
+              </li>
+              {/* Botón de carrito */}
+              <li className="nav-item">
+                <button className="btn cart-button" onClick={toggleCart}>
+                  🛒
+                </button>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Barra de búsqueda */}
         <form className="d-flex justify-content-start search-bar" role="search">
           <input className="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search" />
           <button className="btn btn-outline-success" type="submit">
@@ -96,6 +99,18 @@ const Nav = () => {
           </button>
         </form>
       </div>
+
+      {/* Ventana emergente del carrito */}
+      {isCartOpen && (
+        <div className="cart-modal">
+          <div className="cart-content">
+            <button className="close-button" onClick={toggleCart}>✖</button>
+            <h2>Tu Carrito</h2>
+            <p>No hay productos en tu carrito.</p>
+            {/* Puedes agregar contenido dinámico aquí */}
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
