@@ -4,7 +4,7 @@ import Footer from "./components/Footer";
 import ContactForm from "./components/ContactForm";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './App.css'; 
-import ProductCarousel from './components/ProductCarousel';
+import ProductCard from "./components/ProductCard";
 import PlantDetail from './components/PlantDetail'; // Importa la nueva página
 
 // Importa las imágenes para cada producto
@@ -52,24 +52,6 @@ export const products = [
     navigateTo: "/detalles/violeta",
   },
 ];
-
-function ProductCard({ name, price, images, navigateTo }) {
-  const navigate = useNavigate();
-  
-  const handleClick = () => {
-    navigate(navigateTo, {
-      state: { name, price, images }
-    });
-  };
-
-  return (
-    <div className="producto" onClick={handleClick}>
-      <ProductCarousel images={images} />
-      <h3>{name}</h3>
-      <p>{price}</p>
-    </div>
-  );
-}
 
 function App() {
   return (
