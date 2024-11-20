@@ -1,0 +1,58 @@
+.plant-detail-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .plant-detail-content {
+    display: flex;
+    flex-wrap: wrap; /* Soporte para pantallas pequeñas */
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+  }
+  
+  .plant-carousel {
+    flex: 1;
+    min-width: 300px; /* Asegura que no se comprima demasiado */
+  }
+  
+  .plant-info {
+    flex: 1;
+    padding: 20px;
+    text-align: left;
+  }
+  
+  .plant-info h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  
+  .plant-info h2 {
+    font-size: 24px;
+    color: #65E5DA;
+    margin-bottom: 20px;
+  }
+  
+  .plant-info p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  .send-message-button {
+    background-color: #ffc2d0;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .send-message-button:hover {
+    background-color: #ffa3b5;
+  }
+  

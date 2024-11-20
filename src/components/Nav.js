@@ -1,13 +1,19 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Importa Link de react-router-dom para navegación interna
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom'; // Importa Link y useLocation de react-router-dom
 import '../nav.css';
 
 const Nav = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const location = useLocation(); // Hook para obtener la ubicación actual
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
+
+  // Cerrar el dropdown cuando cambias de página
+  useEffect(() => {
+    setIsDropdownOpen(false); // Cierra el dropdown al cambiar de página
+  }, [location]); // Este efecto se ejecuta cuando la ubicación cambia
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light custom-navbar">
@@ -18,8 +24,9 @@ const Nav = () => {
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
           aria-controls="navbarNav"
-          aria-expanded="false"
+          aria-expanded={isDropdownOpen ? 'true' : 'false'} // Establece el estado de apertura
           aria-label="Toggle navigation"
+          onClick={toggleDropdown} // Abre/cierra el dropdown
         >
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -42,7 +49,7 @@ const Nav = () => {
                   id="catalogoDropdown"
                   role="button"
                   aria-expanded={isDropdownOpen}
-                  onClick={toggleDropdown}
+                  onClick={toggleDropdown} // Cambia el estado de apertura al hacer clic
                 >
                   Catálogo
                 </a>
