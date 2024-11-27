@@ -5,7 +5,7 @@ import "../PlantDetail.css";
 import { useCart } from './CartContext';
 
 function PlantDetail() {
-  const { cart, setCart } = useCart();
+  const { cart, setCart, cartCount, setCartCount } = useCart();
 
   const generateUniqueId = () => Math.random().toString(36).substring(2, 15);
 
@@ -13,6 +13,7 @@ function PlantDetail() {
     const newItem = { name, price, images, id:generateUniqueId() };
     setCart((prevCart) => {
       const updatedCart = [...prevCart, newItem];
+      setCartCount((prevCount) => prevCount + 1); 
       console.log("Carrito actualizado:", updatedCart); // Confirmar el cambio
       return updatedCart;
     });

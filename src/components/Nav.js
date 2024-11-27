@@ -8,14 +8,18 @@ const Nav = ({ searchQuery,  setSearchQuery}) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false); // Estado para controlar el carrito
   const location = useLocation();
-  const { cart, setCart, removeFromCart, getTotalPrice } = useCart();
+  const { cart, setCart, removeFromCart, getTotalPrice, cartCount, setCartCount } = useCart();
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
+
   const toggleCart = () => {
     setIsCartOpen(!isCartOpen); // Alternar el estado del carrito
+    if (!isCartOpen) {
+      setCartCount(0); // Reinicia el contador al abrir el carrito
+    }    
   };
 
     // Función para enviar el mensaje con todos los productos en el carrito
@@ -128,6 +132,9 @@ const Nav = ({ searchQuery,  setSearchQuery}) => {
                 <button className="btn cart-button" onClick={toggleCart}>
                   🛒
                 </button>
+                {cartCount > 0 && (
+                  <span className="cart-badge">{cartCount}</span>
+                )}
               </li>
             </ul>
           </div>
@@ -171,6 +178,13 @@ const Nav = ({ searchQuery,  setSearchQuery}) => {
             >
               Enviar a WhatsApp
             </button>
+      <button
+          className="btn btn-success btn-sm me-2"
+          onClick={() => purchaseItem()}
+        >
+          Comprar
+        </button>
+
           </div>
         </div>
       )}

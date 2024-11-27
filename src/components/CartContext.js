@@ -6,6 +6,8 @@ export const CartContext = createContext();
 // Proveedor del contexto
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
+  const [cartCount, setCartCount] = useState(0);
+
 
   const removeFromCart = (id) => {
     setCart(cart.filter(item => item.id !== id)); // Elimina el ítem por su id
@@ -27,7 +29,7 @@ const getTotalPrice = () => {
     }, 0);
   };
   return (
-    <CartContext.Provider value={{ cart, setCart, removeFromCart, getTotalPrice }}>
+    <CartContext.Provider value={{ cart, setCart, removeFromCart, getTotalPrice, setCartCount, cartCount }}>
       {children}
     </CartContext.Provider>
   );
