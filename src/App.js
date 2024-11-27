@@ -69,25 +69,13 @@ function App() {
   };
   return (
     <div>
-      <Nav />
+      <Nav searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
       <Routes>
         <Route
           path="/"
           element={
             <>
-                <div className="search-container">
-                <input
-                  type="text"
-                  placeholder="Buscar planta por nombre"
-                  value={searchQuery}
-                  onChange={handleSearchChange}
-                  className="search-input"
-                />
-                <button className="search-button">
-                  <i className="fa fa-search"></i> {/* Aquí se coloca la lupa */}
-                </button>
-              </div>
               <h4>Envío a través de Starken o Bluexpress</h4>
 
               {/* Título y sección de consulta */}

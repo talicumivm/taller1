@@ -4,7 +4,7 @@ import '../nav.css';
 import { useCart } from './CartContext';
 import CartItem from './CartIem';
 
-const Nav = () => {
+const Nav = ({ searchQuery,  setSearchQuery}) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false); // Estado para controlar el carrito
   const location = useLocation();
@@ -48,6 +48,12 @@ const Nav = () => {
     setIsDropdownOpen(false);
     setIsCartOpen(false); // Cierra el carrito al cambiar de página
   }, [location]);
+
+
+  // Maneja el evento de búsqueda (usando el campo existente)
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value); // Actualiza el query de búsqueda
+  };
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light custom-navbar">
@@ -122,7 +128,10 @@ const Nav = () => {
         </div>
 
         <form className="d-flex justify-content-start search-bar" role="search">
-          <input className="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search" />
+          <input className="form-control me-2" type="search" placeholder="Buscar..." 
+          aria-label="Search" value={searchQuery}
+                  onChange={handleSearchChange}
+              />
           <button className="btn btn-outline-success" type="submit">
             <i className="fas fa-search"></i>
           </button>
