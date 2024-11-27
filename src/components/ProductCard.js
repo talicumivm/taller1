@@ -17,6 +17,7 @@ const ProductCard = ({name, price, images, navigateTo }) => {
       <ProductCarousel images={images} />
       <h3>{name}</h3>
       <p>{price}</p>
+      <button onClick={handleClick}>Ver detalles</button>
     </div>
   );
   

@@ -14,10 +14,31 @@ function ProductCarousel({ images }) {
 
 
   return (
-    <div className="carousel">
-      <button className="carousel-button prev" onClick={prevSlide}>❮</button>
-      <img src={images[currentIndex]} alt={`Producto ${currentIndex + 1}`} className="carousel-image" />
-      <button className="carousel-button next" onClick={nextSlide}>❯</button>
+        <div className="carousel">
+      <button
+        className="carousel-button prev"
+        onClick={(e) => {
+          e.stopPropagation(); // Prevenir eventos adicionales
+          prevSlide();
+        }}
+      >
+        ❮
+      </button>
+      <img
+        src={images[currentIndex]}
+        alt={`Producto ${currentIndex + 1}`}
+        className="carousel-image"
+        onClick={(e) => e.stopPropagation()} // Prevenir navegación
+      />
+      <button
+        className="carousel-button next"
+        onClick={(e) => {
+          e.stopPropagation(); // Prevenir eventos adicionales
+          nextSlide();
+        }}
+      >
+        ❯
+      </button>
     </div>
   );
 }
