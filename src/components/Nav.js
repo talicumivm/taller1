@@ -8,7 +8,7 @@ const Nav = ({ searchQuery,  setSearchQuery}) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false); // Estado para controlar el carrito
   const location = useLocation();
-  const { cart, removeFromCart, getTotalPrice } = useCart();
+  const { cart, setCart, removeFromCart, getTotalPrice } = useCart();
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -37,12 +37,6 @@ const Nav = ({ searchQuery,  setSearchQuery}) => {
       window.open(whatsappLink, '_blank');
     };
 
-  const handleSendMessage = () => {
-    const phoneNumber = "56973016700"; // Tu número de WhatsApp
-    const message = `Hola, estoy interesado en la planta . ¿Podrías darme más información?`;
-    const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    window.open(whatsappLink, "_blank"); // Abre WhatsApp en una nueva pestaña
-  };
 
   useEffect(() => {
     setIsDropdownOpen(false);
@@ -53,6 +47,18 @@ const Nav = ({ searchQuery,  setSearchQuery}) => {
   // Maneja el evento de búsqueda (usando el campo existente)
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value); // Actualiza el query de búsqueda
+  };
+
+  const purchaseItem = (id) => {
+    const isSuccess = Math.random() > 0.5; // Generar resultado aleatorio (50% éxito)
+    
+    if (isSuccess) {
+      alert('¡Pago exitoso! Gracias por tu compra.');
+      setCart((prevCart) => prevCart.filter((item) => item.id !== id)); // Eliminar el producto comprado del carrito
+      setCart([]); // Vaciar el carrito
+    } else {
+      alert('El pago fue rechazado. Por favor, inténtalo nuevamente.');
+    }
   };
 
   return (
@@ -150,8 +156,9 @@ const Nav = ({ searchQuery,  setSearchQuery}) => {
               <ul>
                 {cart.map((item, index) => (
                   <div>
-                    <CartItem item={item}  onRemove={removeFromCart} key={index}/>
+                    <CartItem item={item}  onRemove={removeFromCart} key={index}   onPurchase={purchaseItem} />
                   </div>
+
                 ))}
               </ul>
             )}

@@ -7,8 +7,10 @@ import { useCart } from './CartContext';
 function PlantDetail() {
   const { cart, setCart } = useCart();
 
+  const generateUniqueId = () => Math.random().toString(36).substring(2, 15);
+
   const handleAddToCart = () => {
-    const newItem = { name, price, images };
+    const newItem = { name, price, images, id:generateUniqueId() };
     setCart((prevCart) => {
       const updatedCart = [...prevCart, newItem];
       console.log("Carrito actualizado:", updatedCart); // Confirmar el cambio

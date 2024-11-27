@@ -11,9 +11,6 @@ export const CartProvider = ({ children }) => {
     setCart(cart.filter(item => item.id !== id)); // Elimina el ítem por su id
   };
 
-//   const getTotalPrice = () => {
-//     return cart.reduce((total, item) => total + parseFloat(item.price), 0); // Convierte el precio a número
-//   };
 const getTotalPrice = () => {
     return cart.reduce((total, item) => {
       // Verifica si el precio es un número válido

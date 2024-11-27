@@ -16,8 +16,8 @@ const ProductCard = ({name, price, images, navigateTo }) => {
     <div className="producto" onClick={handleClick}>
       <ProductCarousel images={images} />
       <h3>{name}</h3>
-      <p>{price}</p>
-      <button onClick={handleClick}>Ver detalles</button>
+      <p>${price}</p>
+      <button onClick={handleClick} className="send-message-button" >Ver detalles</button>
     </div>
   );
   
