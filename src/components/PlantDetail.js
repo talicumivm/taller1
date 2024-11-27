@@ -57,7 +57,9 @@ function PlantDetail() {
           <button onClick={handleSendMessage} className="send-message-button">
             Mandar Mensaje
           </button>
-          <button onClick={handleAddToCart}>Agregar al Carrito</button>
+          <button onClick={handleAddToCart} className="send-message-button">
+          Agregar al carrito
+          </button>
         </div>
       </div>
     </div>
