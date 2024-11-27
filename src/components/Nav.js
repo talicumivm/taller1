@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import '../nav.css';
+import { useCart } from './CartContext';
+import CartItem from './CartIem';
 
 const Nav = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false); // Estado para controlar el carrito
   const location = useLocation();
+  const { cart, removeFromCart } = useCart();
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -106,8 +109,17 @@ const Nav = () => {
           <div className="cart-content">
             <button className="close-button" onClick={toggleCart}>✖</button>
             <h2>Tu Carrito</h2>
-            <p>No hay productos en tu carrito.</p>
-            {/* Puedes agregar contenido dinámico aquí */}
+            {cart.length === 0 ? (
+              <p>No hay productos en tu carrito.</p>
+            ) : (
+              <ul>
+                {cart.map((item, index) => (
+                  <div>
+                    <CartItem item={item}  onRemove={removeFromCart} key={index}/>
+                  </div>
+                ))}
+              </ul>
+            )}
           </div>
         </div>
       )}

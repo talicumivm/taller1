@@ -2,8 +2,19 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import ProductCarousel from "./ProductCarousel"; // Componente para las imágenes
 import "../PlantDetail.css";
+import { useCart } from './CartContext';
 
 function PlantDetail() {
+  const { cart, setCart } = useCart();
+
+  const handleAddToCart = () => {
+    const newItem = { name, price, images };
+    setCart((prevCart) => {
+      const updatedCart = [...prevCart, newItem];
+      console.log("Carrito actualizado:", updatedCart); // Confirmar el cambio
+      return updatedCart;
+    });
+  };
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -46,6 +57,7 @@ function PlantDetail() {
           <button onClick={handleSendMessage} className="send-message-button">
             Mandar Mensaje
           </button>
+          <button onClick={handleAddToCart}>Agregar al Carrito</button>
         </div>
       </div>
     </div>
