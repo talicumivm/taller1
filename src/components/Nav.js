@@ -8,7 +8,7 @@ const Nav = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false); // Estado para controlar el carrito
   const location = useLocation();
-  const { cart, removeFromCart } = useCart();
+  const { cart, removeFromCart, getTotalPrice } = useCart();
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -16,6 +16,32 @@ const Nav = () => {
 
   const toggleCart = () => {
     setIsCartOpen(!isCartOpen); // Alternar el estado del carrito
+  };
+
+    // Función para enviar el mensaje con todos los productos en el carrito
+    const handleSendWhatsappMessage = () => {
+      if (cart.length === 0) return;
+  
+      // Crear un mensaje con los detalles de cada producto
+      let message = 'Hola, me gustaría preguntar sobre los siguientes productos en el carrito:\n\n';
+      cart.forEach((item, index) => {
+        message += `${index + 1}. ${item.name} - ${item.price}€\n`;
+      });
+      message += `\nTotal: ${getTotalPrice()}€`;
+  
+      // URL para abrir WhatsApp con el mensaje
+      const phoneNumber = '56973016700'; // Tu número de WhatsApp
+      const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+  
+      // Abre WhatsApp en una nueva pestaña
+      window.open(whatsappLink, '_blank');
+    };
+
+  const handleSendMessage = () => {
+    const phoneNumber = "56973016700"; // Tu número de WhatsApp
+    const message = `Hola, estoy interesado en la planta . ¿Podrías darme más información?`;
+    const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappLink, "_blank"); // Abre WhatsApp en una nueva pestaña
   };
 
   useEffect(() => {
@@ -120,6 +146,15 @@ const Nav = () => {
                 ))}
               </ul>
             )}
+            <li className="list-group-item d-flex justify-content-between align-items-center">
+                  <strong>Total:</strong> {getTotalPrice()}€
+                </li>
+                <button
+              onClick={handleSendWhatsappMessage}
+              className="btn btn-primary w-100 mt-3"
+            >
+              Enviar a WhatsApp
+            </button>
           </div>
         </div>
       )}

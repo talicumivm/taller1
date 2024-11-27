@@ -29,25 +29,25 @@ import producto4_3 from './assets/imagenes/producto4.2.jpg';
 export const products = [
   {
     name: "Palmera Chamadoera",
-    price: "$6500",
+    price: 6500,
     images: [producto1_1, producto1_2, producto1_3],
     navigateTo: "/detalles/palmera",
   },
   {
     name: "Singonio Plateado",
-    price: "$6000",
+    price: 6000,
     images: [producto2_1, producto2_2, producto2_3],
     navigateTo: "/detalles/singonio",
   },
   {
     name: "Planta de Incienso",
-    price: "$3000",
+    price: 3000,
     images: [producto3_1, producto3_2, producto3_3],
     navigateTo: "/detalles/incienso",
   },
   {
     name: "Violeta de Persia",
-    price: "$6000",
+    price: 6000,
     images: [producto4_1, producto4_2, producto4_3],
     navigateTo: "/detalles/violeta",
   },
