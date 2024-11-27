@@ -1,4 +1,5 @@
 import { Routes, Route, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import ContactForm from "./components/ContactForm";
@@ -54,6 +55,18 @@ export const products = [
 ];
 
 function App() {
+
+  const [searchQuery, setSearchQuery] = useState(""); // Estado para la búsqueda
+
+  // Filtrar productos según el nombre
+  const filteredProducts = products.filter((product) =>
+    product.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  // Maneja el evento de búsqueda (usando el campo existente)
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value); // Actualiza el query de búsqueda
+  };
   return (
     <div>
       <Nav />
@@ -63,6 +76,18 @@ function App() {
           path="/"
           element={
             <>
+                <div className="search-container">
+                <input
+                  type="text"
+                  placeholder="Buscar planta por nombre"
+                  value={searchQuery}
+                  onChange={handleSearchChange}
+                  className="search-input"
+                />
+                <button className="search-button">
+                  <i className="fa fa-search"></i> {/* Aquí se coloca la lupa */}
+                </button>
+              </div>
               <h4>Envío a través de Starken o Bluexpress</h4>
 
               {/* Título y sección de consulta */}
@@ -70,7 +95,7 @@ function App() {
 
               {/* Sección de productos */}
               <div className="productos">
-                {products.map((product, index) => (
+                {filteredProducts.map((product, index) => (
                   <ProductCard
                     key={index}
                     name={product.name}
